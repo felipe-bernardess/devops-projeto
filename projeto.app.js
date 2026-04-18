@@ -1,7 +1,7 @@
 const http = require('http');
 
 const listaTarefas = [
-  'Estudar API',
+  'Executar API',
   'Testar rotas',
   'Aprender Docker'
 ];
@@ -12,6 +12,7 @@ const servidor = http.createServer((req, res) => {
     res.write('Teste de rota principal funcionando');
   } 
   else if (req.url === '/tarefas') {
+    res.setHeader('Content-Type', 'application/json'); // 👈 novo
     res.write(JSON.stringify(listaTarefas));
   } 
   else {
