@@ -1,0 +1,16 @@
+name: CI - Teste API
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  teste:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Baixar código
+      uses: actions/checkout@v3
+
+    - name: Teste simples
+      run: echo "CI funcionando"
