@@ -4,7 +4,11 @@ const servidor = http.createServer((req, res) => {
 
   if (req.url === '/') {
     res.write('Teste de rota principal funcionando');
-  } else {
+  } 
+  else if (req.url === '/tarefas') {
+    res.write('Teste da rota de tarefas');
+  } 
+  else {
     res.write('Rota não encontrada');
   }
 
