@@ -9,8 +9,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Baixar código
-      uses: actions/checkout@v3
+      - name: Baixar código
+        uses: actions/checkout@v3
 
-    - name: Teste simples
-      run: echo "CI funcionando"
+      - name: Teste simples
+        run: echo "CI funcionando"
+
+      - name: Simular deploy
+        run: echo "Deploy realizado com sucesso"
+
+      - name: Enviar alerta para Telegram
+        if: always()
+        run: |
+          curl -X POST https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage \
+          -d chat_id=${{ secrets.TELEGRAM_CHAT_ID }} \
+          -d text="CI finalizada com status: ${{ job.status }}"
+          
