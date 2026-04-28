@@ -3,6 +3,8 @@ name: CI - Teste API
 on:
   push:
     branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   teste:
@@ -12,8 +14,11 @@ jobs:
       - name: Baixar código
         uses: actions/checkout@v3
 
-      - name: Teste simples
-        run: echo "CI funcionando ok"
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Rodar testes unitários
+        run: npm test
 
       - name: Simular deploy
         run: echo "Deploy realizado com sucesso"
